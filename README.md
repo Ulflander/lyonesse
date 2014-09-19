@@ -1,4 +1,4 @@
-jessy
+Jessy
 =====
 
 Convert Jessy files or strings to CSS, Sass or JS.
@@ -38,11 +38,33 @@ ten: 10
 ```
 
 
-## Jessy methods
+## Jessy functions
 
-- `jessy.fromString(str, [options], callback)`
-- `jessy.fromFile(filepath, [options], callback)`
-- `jessy.parse(str)`
-- `jessy.toSass(obj, options)`
-- `jessy.toJs(obj, options)`
+Callback takes two arguments: `err` in case of errors, and `result` for compiled string.
 
+#### `jessy.fromString(str, [options], callback)`
+
+Parse a Jessy string and call back with Js or Sass compiled string.
+
+#### `jessy.fromFile(filepath, [options], callback)`
+
+Parse a Jessy file and call back with Js or Sass compiled string.
+
+#### `jessy.parse(str)`
+
+Returns a Jessy object from a Jessy string.
+
+#### `jessy.toSass(obj, options)`
+
+Returns a Sass string from a Jessy object, using given options.
+
+#### `jessy.toJs(obj, options)`
+
+Returns a Js string from a Jessy object, using given options.
+
+
+## Options
+
+- `symbol`: default `'$'` - Specifies prefix of Sass variables
+- `target`: `'sass'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
+- `namespace`: default `null`
