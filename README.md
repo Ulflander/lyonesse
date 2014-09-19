@@ -14,6 +14,14 @@ your gulp build process.
 
 Released under MIT License.
 
+
+## Install
+
+```
+npm install --save jessy
+```
+
+
 ## Why Jessy
 
 When developing front-ends, it's often the case that a color may be used both
@@ -87,7 +95,7 @@ jessy.fromString('color: #000', function (err, result) {
 ## Options
 
 - `symbol`: default `'$'` - Specifies prefix of Sass variables
-- `target`: `'sass'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
+- `target`: `'scss'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
 - `namespace`: default `null`
 
 ## Run tests
