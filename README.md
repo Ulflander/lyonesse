@@ -42,26 +42,40 @@ ten: 10
 
 Callback takes two arguments: `err` in case of errors, and `result` for compiled string.
 
-#### `jessy.fromString(str, [options], callback)`
+##### `jessy.fromString(str, [options], callback)`
 
 Parse a Jessy string and call back with Js or Sass compiled string.
 
-#### `jessy.fromFile(filepath, [options], callback)`
+##### `jessy.fromFile(filepath, [options], callback)`
 
 Parse a Jessy file and call back with Js or Sass compiled string.
 
-#### `jessy.parse(str)`
+##### `jessy.parse(str)`
 
 Returns a Jessy object from a Jessy string.
 
-#### `jessy.toSass(obj, options)`
+##### `jessy.toSass(obj, options)`
 
 Returns a Sass string from a Jessy object, using given options.
 
-#### `jessy.toJs(obj, options)`
+##### `jessy.toJs(obj, options)`
 
 Returns a Js string from a Jessy object, using given options.
 
+#### Example
+
+```js
+var jessy = require('jessy');
+
+jessy.fromString('color: #000', function (err, result) {
+    if (!!err) {
+        return;
+    }
+
+    console.log(result); // var color = '#000';
+});
+
+```
 
 ## Options
 
