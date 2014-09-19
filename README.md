@@ -9,6 +9,8 @@ your gulp build process.
 - [Jessy file specs](#jessy-file-specs)
 - [Functions](#jessy-functions)
 - [Available options](#options)
+- [Run tests](#run-tests)
+- [Changelog](#changelog)
 
 
 ## Why Jessy
@@ -94,3 +96,7 @@ Requires mocha (`npm install -g mocha`), then in command line:
 ```
 $ mocha
 ```
+
+## Changelog
+
+- 0.1.0: First version
