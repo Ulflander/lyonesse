@@ -1,0 +1,28 @@
+{
+  "name": "jessy",
+  "version": "0.0.0",
+  "description": "Convert Jessy files or strings to CSS, Sass or JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ulflander/jessy.git"
+  },
+  "keywords": [
+    "jessy",
+    "css",
+    "sass",
+    "js"
+  ],
+  "author": "Ulflander",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ulflander/jessy/issues"
+  },
+  "homepage": "https://github.com/Ulflander/jessy",
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  }
+}
