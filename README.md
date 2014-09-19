@@ -1,7 +1,7 @@
 Jessy
 =====
 
-Convert Jessy files or strings to CSS, Sass or JS.
+Convert Jessy files or strings to Sass and/or JS.
 
 View also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
 your gulp build process.
