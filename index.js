@@ -5,7 +5,9 @@
     'use strict';
 
     var fs = require('fs'),
-        extend = require('util')._extend;
+        extend = require('util')._extend,
+
+        TAB = '    ';
 
     /**
      * Returns a valid options object.
@@ -18,7 +20,8 @@
             symbol: '$',
             namespace: null,
             target: 'js',
-            quotes: '\''
+            quotes: '\'',
+            closure: false
         }, options || {});
     };
 
@@ -109,13 +112,16 @@
     e.toJs = function(obj, options) {
         var k,
             str,
-            res = [];
+            res = [],
+            strRes,
+            tab;
 
         if (Object.keys(obj).length === 0) {
             return '';
         }
 
         options = e.defaults(options);
+        tab = options.closure ? TAB + TAB : TAB;
 
         for (k in obj) {
             if (obj.hasOwnProperty(k)) {
@@ -140,15 +146,28 @@
         if (!!options.namespace) {
 
             if (options.namespace.indexOf('.') > -1) {
-                return options.namespace + ' = {\n    ' +
-                    res.join(',\n    ') + '\n};';
-            }
 
-            return 'var ' + options.namespace + ' = {\n    ' +
-                res.join(',\n    ') + '\n};';
+                if (!!options.closure) {
+                    strRes = '(function() {\n' + TAB + '\'use strict\';\n' + 
+                        TAB + options.namespace + ' = {\n' + tab +
+                        res.join(',\n' + tab) + '\n' + TAB + '};' + '\n}());';
+                } else {
+
+                    strRes = options.namespace + ' = {\n' + tab +
+                        res.join(',\n' + tab) + '\n};';
+                }
+
+            } else {
+                strRes = 'var ' + options.namespace + ' = {\n    ' +
+                    res.join(',\n' + tab) + '\n};';
+            }
+        } else {
+            strRes = 'var ' + res.join(',\n' + tab) + ';';
         }
 
-        return 'var ' + res.join(',\n    ') + ';';
+
+
+        return strRes;
     };
 
 

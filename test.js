@@ -37,37 +37,42 @@
 
             it('should return a valid JS string from a jessy string with one value', function() {
                 var res = jessy.toJs({color: '#000'});
-                assert.equal('var color = \'#000\';', res);
+                assert.equal(res, 'var color = \'#000\';');
             });
 
             it('should return an empty string from a jessy string with no value', function() {
                 var res = jessy.toJs({});
-                assert.equal('', res);
+                assert.equal(res, '');
             });
 
             it('should return a valid JS string from a jessy string with two values', function() {
                 var res = jessy.toJs({color: '#000', plop: 'val'});
-                assert.equal('var color = \'#000\',\n    plop = \'val\';', res);
+                assert.equal(res, 'var color = \'#000\',\n    plop = \'val\';');
             });
 
             it('should return a valid JS string from a jessy string one numeric value', function() {
                 var res = jessy.toJs({color: '5'});
-                assert.equal('var color = 5;', res);
+                assert.equal(res, 'var color = 5;');
             });
 
             it('should return a valid JS string from a jessy string one numeric value and a key containing a hyphen', function() {
                 var res = jessy.toJs({'co-lor': '5'});
-                assert.equal('var co_lor = 5;', res);
+                assert.equal(res, 'var co_lor = 5;');
             });
 
             it('should return a valid JS string from a jessy string one numeric value with given simple namespace', function() {
                 var res = jessy.toJs({color: '5'}, {namespace: 'hello'});
-                assert.equal('var hello = {\n    color: 5\n};', res);
+                assert.equal(res, 'var hello = {\n    color: 5\n};');
             });
 
             it('should return a valid JS string from a jessy string one numeric value with given nested namespace', function() {
                 var res = jessy.toJs({color: '5'}, {namespace: 'hello.world'});
-                assert.equal('hello.world = {\n    color: 5\n};', res);
+                assert.equal(res, 'hello.world = {\n    color: 5\n};');
+            });
+
+            it('should return a valid JS string from a jessy string one numeric value with given nested namespace and closure', function() {
+                var res = jessy.toJs({color: '5'}, {namespace: 'hello.world', closure: true});
+                assert.equal(res, '(function() {\n    \'use strict\';\n    hello.world = {\n        color: 5\n    };\n}());');
             });
         });
 

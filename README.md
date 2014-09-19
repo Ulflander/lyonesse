@@ -98,6 +98,7 @@ jessy.fromString('color: #000', function (err, result) {
 - `symbol`: default `'$'` - Specifies prefix of Sass variables
 - `target`: `'scss'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
 - `namespace`: default `null`
+- `closure`: default `false` - For JS only, enclose result in a closure (nested namespaces only)
 
 ## Run tests
 
@@ -110,3 +111,4 @@ $ mocha
 ## Changelog
 
 - 0.1.0: First version
+- 0.1.1: Add closure option
