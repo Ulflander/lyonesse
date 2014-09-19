@@ -6,6 +6,10 @@ Convert Jessy files or strings to CSS, Sass or JS.
 View also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
 your gulp build process.
 
+- [Jessy fie specs](#jessy-file-specs)
+- [Functions](#jessy-functions)
+- [Available options](#options)
+
 
 ## Why Jessy
 
