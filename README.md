@@ -6,7 +6,7 @@ Convert Jessy files or strings to CSS, Sass or JS.
 View also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
 your gulp build process.
 
-- [Jessy fie specs](#jessy-file-specs)
+- [Jessy file specs](#jessy-file-specs)
 - [Functions](#jessy-functions)
 - [Available options](#options)
 
@@ -22,7 +22,7 @@ Most notably, having a unique file for all the colors used in your web
 application will ease any future redesign.
 
 
-## Jessy files specs
+## Jessy file specs
 
 - A Jessy file is a list of key/value pairs, one per line.
 - Separator between the key and the value is `:`
