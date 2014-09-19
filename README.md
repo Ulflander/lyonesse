@@ -86,3 +86,11 @@ jessy.fromString('color: #000', function (err, result) {
 - `symbol`: default `'$'` - Specifies prefix of Sass variables
 - `target`: `'sass'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
 - `namespace`: default `null`
+
+## Run tests
+
+Requires mocha (`npm install -g mocha`), then in command line:
+
+```
+$ mocha
+```
