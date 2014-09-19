@@ -3,8 +3,10 @@ Jessy
 
 Convert Jessy files or strings to Sass and/or JS.
 
-View also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
+See also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
 your gulp build process.
+
+If you use Sublime Text, download [sublime-jessy](https://github.com/Ulflander/sublime-jessy) syntax definition file, it provides code highlighting.
 
 - [Jessy file specs](#jessy-file-specs)
 - [Functions](#jessy-functions)
@@ -38,7 +40,7 @@ application will ease any future redesign.
 - A Jessy file is a list of key/value pairs, one per line.
 - Separator between the key and the value is `:`
 - Comments are available if the line starts with `#`
-- Convention is to use CamelCase for key names
+- Convention is to use camelCase for key names
 - If keys contains a hyphen (`-`) char, it will be converted to underscore `_` when converting to JS
 - You can haz empty linez
 
@@ -89,7 +91,6 @@ jessy.fromString('color: #000', function (err, result) {
 
     console.log(result); // var color = '#000';
 });
-
 ```
 
 ## Options

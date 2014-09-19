@@ -9,6 +9,7 @@
 
     /**
      * Returns a valid options object.
+     * 
      * @param  {Object} options Given options
      * @return {Object}         Full valid options
      */
@@ -16,7 +17,8 @@
         return extend({
             symbol: '$',
             namespace: null,
-            target: 'js'
+            target: 'js',
+            quotes: '\''
         }, options || {});
     };
 
@@ -126,7 +128,7 @@
                 }
 
                 if (!obj[k].match('^[0-9\.]+$')) {
-                    str += '\'' + obj[k] + '\'';
+                    str += options.quotes + obj[k] + options.quotes;
                 } else {
                     str += obj[k];
                 }
