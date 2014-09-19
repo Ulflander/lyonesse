@@ -12,6 +12,7 @@ your gulp build process.
 - [Run tests](#run-tests)
 - [Changelog](#changelog)
 
+Released under MIT License.
 
 ## Why Jessy
 
