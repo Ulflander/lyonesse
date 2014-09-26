@@ -8,7 +8,7 @@ your gulp build process.
 
 If you use Sublime Text, download [sublime-jessy](https://github.com/Ulflander/sublime-jessy) syntax definition file, it provides code highlighting.
 
-- [Jessy file specs](#jessy-file-specs)
+- [Jessy file specs](SPEC.md)
 - [Functions](#jessy-functions)
 - [Available options](#options)
 - [Run tests](#run-tests)
