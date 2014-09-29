@@ -10,24 +10,23 @@ Jessy file format specifications
 
 ## Line
 
-There three kind of lines:
+There are three kind of lines:
 
-- A comment, if the line starts with the char `#`
-- An empty line
+- Empty lines (zero or more spaces/tabs)
+- A comment, if the line starts with the char `#` (even with spaces before the `#`)
 - A key/value pair, the key being the name, and its associated value. 
     - Separator between key and value is char `:`
 
-## Indentation
-
 ## Key
 
+- Authorized chars for keys are `[a-zA-Z0-9\-_]`
 - If the key contains a hyphen (`-`) char, it should be converted to underscore `_` when converted to JS
 
 ## Value
 
-Here are the detailled specifications:
-
-- A Jessy file is a list of key/value pairs, one per line.
+- Value can be anything
+- It should be copied as is in Sass
+- For JS, it should be converted in case it's a number. A number is anything that contains only chars `[0-9\.]`
 
 
 ## Example
@@ -39,10 +38,27 @@ The following example is a valid Jessy file:
 # This also, but not the color on the line below
 
 backgroundColor: #FF5500
-titleColor: 10
+titleMargin: 10px
+lineHeight: 1.1
+```
+
+The following is the conversion into Sass:
+
+```
+$backgroundColor: #FF5500;
+$titleMargin: 10px;
+$lineHeight: 1.1;
+```
+
+The following is the conversion into JS (with no namspace):
+
+```
+var backgroundColor = '#FF5500',
+    titleMargin = '10px',
+    lineHeight = 1.1;
 ```
 
 ## Best practices
 
-- Use camelCase
+- Use lowerCamelCase for key names
 
