@@ -1,6 +1,8 @@
 Jessy
 =====
 
+[![Build Status](https://travis-ci.org/Ulflander/jessy.svg?branch=master)](https://travis-ci.org/Ulflander/jessy)
+
 Convert Jessy files or strings to Sass and/or JS.
 
 See also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
