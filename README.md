@@ -16,7 +16,6 @@ If you use Sublime Text, download [sublime-jessy](https://github.com/Ulflander/s
 
 Released under MIT License.
 
-
 ## Install
 
 ```
@@ -53,6 +52,10 @@ Parse a Jessy file and call back with Js or Sass compiled string.
 
 Returns a Jessy object from a Jessy string.
 
+##### `jessy.solve(obj, options)`
+
+Solve variables inside the Jessy file.
+
 ##### `jessy.toSass(obj, options)`
 
 Returns a Sass string from a Jessy object, using given options.
@@ -71,9 +74,22 @@ jessy.fromString('color: #000', function (err, result) {
         return;
     }
 
-    console.log(result); // var color = '#000';
+    console.log(result); 
+    // var color = '#000';
 });
 ```
+
+Since Jessy 0.1.2, variables inside Jessy are now supported. For example, given this Jessy file:
+
+```
+myColor: #234567;
+otherColor: $myColor
+```
+
+when parsed and solve, the variable `otherColor` will get the value of 
+`myColor` so `otherColor` value is now `#234567`.
+
+Use the `solve` option to deactivate this behaviour.
 
 ## Options
 
@@ -81,6 +97,7 @@ jessy.fromString('color: #000', function (err, result) {
 - `target`: `'scss'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
 - `namespace`: default `null`
 - `closure`: default `false` - For JS only, enclose result in a closure (nested namespaces only)
+- `solve`: default `true` - Solve or not the variables inside the jessy file
 
 ## Run tests
 
@@ -94,3 +111,8 @@ $ mocha
 
 - 0.1.0: First version
 - 0.1.1: Add closure option
+- 0.1.2: Variable replacement!
+
+## Milestones
+
+- 0.2.0: Add theme support

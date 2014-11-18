@@ -105,6 +105,14 @@
             });
         });
 
+
+        describe('#solve()', function() {
+            it('should return an object with one value replaced by another value', function(){
+                var obj = jessy.solve(jessy.parse('some: thing\nother:$some'));
+                assert.equal('thing', obj.other);
+            });
+        });
+
         
     });
 

@@ -21,7 +21,8 @@
             namespace: null,
             target: 'js',
             quotes: '\'',
-            closure: false
+            closure: false,
+            solve: true
         }, options || {});
     };
 
@@ -67,7 +68,7 @@
             options = e.defaults(options);
         }
 
-        var jessy = e.parse(str);
+        var jessy = e.solve(e.parse(str));
 
         if (options.target === 'js') {
             callback(null, e.toJs(jessy, options));
@@ -198,6 +199,37 @@
         }
 
         return res;
+    };
+
+    /**
+     * Solve variables in a jessy object.
+     * 
+     * @param  {Object} obj     Jessy object
+     * @param  {Object} options Options
+     * @return  {Object} Jessy object
+     */
+    e.solve = function(obj, options) {
+        var key,
+            val;
+
+        options = e.defaults(options);
+
+        if (options.solve === false) {
+            return obj;
+        }
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                val = obj[key];
+
+                if (val.indexOf(options.symbol) === 0 && 
+                    obj.hasOwnProperty(val.slice(1))) {
+                    obj[key] = obj[val.slice(1)];
+                }
+            }
+        }
+
+        return obj;
     };
 
 

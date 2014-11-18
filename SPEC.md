@@ -27,6 +27,7 @@ There are three kind of lines:
 - Value can be anything
 - It should be copied as is in Sass
 - For JS, it should be converted in case it's a number. A number is anything that contains only chars `[0-9\.]`
+- Value can be a reference to a previous key, then value should be replaced by the value corresponding to this other key
 
 
 ## Example
@@ -40,6 +41,7 @@ The following example is a valid Jessy file:
 backgroundColor: #FF5500
 titleMargin: 10px
 lineHeight: 1.1
+lineHeightAlias: $lineHeight
 ```
 
 The following is the conversion into Sass:
@@ -48,17 +50,19 @@ The following is the conversion into Sass:
 $backgroundColor: #FF5500;
 $titleMargin: 10px;
 $lineHeight: 1.1;
+$lineHeightAlias: 1.1;
 ```
 
-The following is the conversion into JS (with no namspace):
+The following is the conversion into JS (with no namespace):
 
 ```
 var backgroundColor = '#FF5500',
     titleMargin = '10px',
-    lineHeight = 1.1;
+    lineHeight = 1.1,
+    lineHeightAlias = 1.1;
 ```
 
 ## Best practices
 
-- Use lowerCamelCase for key names
+- Use `lowerCamelCase` for key names
 
