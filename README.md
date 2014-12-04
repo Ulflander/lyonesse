@@ -146,6 +146,7 @@ $ mocha
 - 0.1.0: First version
 - 0.1.1: Add closure option
 - 0.1.2: Variable replacement!
+- 0.1.3: Namespaces!
 
 ## Milestones
 
