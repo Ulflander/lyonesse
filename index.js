@@ -5,6 +5,7 @@
     'use strict';
 
     var fs = require('fs'),
+        stringify = require('stringify-object'),
         extend = require('util')._extend,
 
         TAB = '    ';
@@ -22,7 +23,8 @@
             target: 'js',
             quotes: '\'',
             closure: false,
-            solve: true
+            solve: true,
+            tab: TAB
         }, options || {});
     };
 
@@ -68,12 +70,19 @@
             options = e.defaults(options);
         }
 
-        var jessy = e.solve(e.parse(str));
+        var jessy = e.solve(e.parse(str)),
+            result;
 
         if (options.target === 'js') {
-            callback(null, e.toJs(jessy, options));
+            result = e.toJs(jessy, options);
         } else {
-            callback(null, e.toSass(jessy, options));
+            result = e.toSass(jessy, options);
+        }
+
+        if (typeof callback === 'function') {
+            callback(null, result);
+        } else {
+            return result;
         }
     };
 
@@ -84,9 +93,9 @@
      * @param  {Object} options Options
      * @return {String}         Sass string
      */
-    e.toSass = function(obj, options) {
-        var k,
-            res = [];
+    e.toSass = function(obj, options, res, ns) {
+        var k;
+        res = res || [];
 
         if (Object.keys(obj).length === 0) {
             return '';
@@ -96,7 +105,11 @@
 
         for (k in obj) {
             if (obj.hasOwnProperty(k)) {
-                res.push(options.symbol + k + ': ' + obj[k] + ';');
+                if (typeof obj[k] === 'object') {
+                    e.toSass(obj[k], options, res, (!!ns ? ns + '-' : '') + k);
+                } else {
+                    res.push(options.symbol + (!!ns ? ns + '-' : '') + k + ': ' + obj[k] + ';');
+                }
             }
         }
 
@@ -111,18 +124,17 @@
      * @return {String}         JS string
      */
     e.toJs = function(obj, options) {
+        options = e.defaults(options);
         var k,
             str,
             res = [],
-            strRes,
-            tab;
+            tab = (options.closure ? options.tab : '') + options.tab,
+            strRes;
+
 
         if (Object.keys(obj).length === 0) {
             return '';
         }
-
-        options = e.defaults(options);
-        tab = options.closure ? TAB + TAB : TAB;
 
         for (k in obj) {
             if (obj.hasOwnProperty(k)) {
@@ -134,24 +146,34 @@
                     str += ' = ';
                 }
 
-                if (!obj[k].match('^[0-9\.]+$')) {
-                    str += options.quotes + obj[k] + options.quotes;
+                if (typeof obj[k] === 'object') {
+                    res.push(str + stringify(obj[k], { 
+                        indent: options.tab,
+                        singleQuotes: options.quotes === '\''
+                    }));
                 } else {
-                    str += obj[k];
-                }
 
-                res.push(str);
+                    if (typeof obj[k] === 'string' &&
+                        !obj[k].match('^[0-9\.]+$')) {
+                        str += options.quotes + obj[k] + options.quotes;
+                    } else {
+                        str += obj[k];
+                    }
+
+                    res.push(str);
+                }
             }
         }
+
 
         if (!!options.namespace) {
 
             if (options.namespace.indexOf('.') > -1) {
 
                 if (!!options.closure) {
-                    strRes = '(function() {\n' + TAB + '\'use strict\';\n' + 
-                        TAB + options.namespace + ' = {\n' + tab +
-                        res.join(',\n' + tab) + '\n' + TAB + '};' + '\n}());';
+                    strRes = '(function() {\n' + options.tab + '\'use strict\';\n' + 
+                        options.tab + options.namespace + ' = {\n' + tab +
+                        res.join(',\n' + tab) + '\n' + options.tab + '};' + '\n}());';
                 } else {
 
                     strRes = options.namespace + ' = {\n' + tab +
@@ -173,32 +195,73 @@
 
 
     /**
-     * Parse a jessy string and return an object.
+     * Recursively parse a jessy string and return an object.
      * 
      * @param  {String} str Jessy string
+     * @param  {String} [obj={}] Optional, target object
      * @return {Object}     Result of parsing
      */
-    e.parse = function(str) {
-        var a = str.split('\n'),
+    e.parse = function(str, obj, depth) {
+        var a = str.replace(new RegExp(TAB, 'gi'), '\t').split('\n'),
             i,
+            j,
             l = a.length,
             line,
             idx,
-            res = {};
-
+            key,
+            value,
+            childs,
+            d = depth || 0,
+            root = obj || {};
 
         for (i = 0; i < l; i += 1) {
-            line = a[i].trim();
+            line = a[i];
+            idx = line.indexOf(':');
 
-            if (line.length > 0 && line[0] !== '#') {
-                idx = line.indexOf(':');
-                if (idx > -1) {
-                    res[line.slice(0, idx).trim()] = line.slice(idx + 1).trim();
+            // Filter comments, empty lines and invalid lines
+            if (!!line.trim().length && line.trim()[0] !== '#') {
+
+                // Validate separator
+                if (idx <= 0) {
+                    throw new Error('ParseError at line #' + (i + 1) + 
+                        ': no separator. Line content: ' + line);
+                }
+
+                key = line.slice(0, idx).trim();
+                value = line.slice(idx + 1).trim();
+                // New namespace
+                if (!value.length) {
+                    j = i + 1;
+                    childs = [];
+                    // Find child lines
+                    while (j < l) {
+                        idx = 0;
+                        line = a[j];
+                        while (line.indexOf('\t') === 0) {
+                            line = line.slice(1);
+                            idx += 1;
+                        }
+                        if (idx > d) {
+                            childs.push(a[j]);
+                        } else {
+                            break;
+                        }
+                        j += 1;
+                    }
+                    i = j - 1;
+
+                    // Set nested object and recursively parse child lines
+                    root[key] = {};
+                    if (childs.length) {
+                        e.parse(childs.join('\n'), root[key], d + 1);
+                    }
+                } else {
+                    root[key] = value;
                 }
             }
         }
 
-        return res;
+        return root;
     };
 
     /**
@@ -222,7 +285,9 @@
             if (obj.hasOwnProperty(key)) {
                 val = obj[key];
 
-                if (val.indexOf(options.symbol) === 0 && 
+                if (typeof val === 'object') {
+                    obj[key] = e.solve(obj[key], options);
+                } else if (val.indexOf(options.symbol) === 0 && 
                     obj.hasOwnProperty(val.slice(1))) {
                     obj[key] = obj[val.slice(1)];
                 }

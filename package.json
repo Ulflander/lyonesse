@@ -24,5 +24,8 @@
   "homepage": "https://github.com/Ulflander/jessy",
   "devDependencies": {
     "mocha": "^1.21.4"
+  },
+  "dependencies": {
+    "stringify-object": "^1.0.0"
   }
 }

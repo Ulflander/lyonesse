@@ -81,10 +81,12 @@ jessy.fromString('color: #000', function (err, result) {
 });
 ```
 
+#### Variables in Jessy
+
 Since Jessy 0.1.2, variables inside Jessy are now supported. For example, given this Jessy file:
 
 ```
-myColor: #234567;
+myColor: #234567
 otherColor: $myColor
 ```
 
@@ -92,6 +94,36 @@ when parsed and solve, the variable `otherColor` will get the value of
 `myColor` so `otherColor` value is now `#234567`.
 
 Use the `solve` option to deactivate this behaviour.
+
+#### Namespaces
+
+Since Jessy 0.1.3, you can use namespaces in Jessy files:
+
+```
+my:
+    namespace:
+        color: #000
+    inside: #f00
+global: #fff
+```
+
+This will produce the following JavaScript: 
+```js
+var my = {
+        namespace: {
+            color: '#000'
+        },
+        inside: '#f00'
+    }, 
+    global = '#fff';
+```
+
+and the following Sass:
+```sass
+$my-namespace-color: #000;
+$my-inside: #f00;
+$global: #fff;
+```
 
 ## Options
 
