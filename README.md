@@ -147,6 +147,8 @@ $ mocha
 - 0.1.1: Add closure option
 - 0.1.2: Variable replacement!
 - 0.1.3: Namespaces!
+- 0.2.0: It's Scss, not Sass dumb
+    + Breaking change: rename `toSass` method to `toScss`
 
 ## Milestones
 
