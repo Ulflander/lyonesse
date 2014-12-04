@@ -1,6 +1,6 @@
 {
   "name": "jessy",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Convert Jessy files or strings to CSS, Scss or JS",
   "main": "index.js",
   "scripts": {

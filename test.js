@@ -146,6 +146,10 @@
                 var obj = jessy.solve(jessy.parse('some: thing\nother:$some'));
                 assert.equal('thing', obj.other);
             });
+            it('should return an object with one value replaced by another value when using nested namespaces', function(){
+                var obj = jessy.solve(jessy.parse('some: thing\nany:\n\tother:$some'));
+                assert.equal('thing', obj.any.other);
+            });
         });
 
 

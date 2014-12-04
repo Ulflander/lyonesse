@@ -149,6 +149,7 @@ $ mocha
 - 0.1.3: Namespaces!
 - 0.2.0: It's Scss, not Sass dumb
     + Breaking change: rename `toSass` method to `toScss`
+- 0.2.1: Fix variables inside namespaces
 
 ## Milestones
 

@@ -271,9 +271,11 @@
      * @param  {Object} options Options
      * @return  {Object} Jessy object
      */
-    e.solve = function(obj, options) {
+    e.solve = function(obj, options, root) {
         var key,
             val;
+
+        root = root || obj;
 
         options = e.defaults(options);
 
@@ -286,10 +288,10 @@
                 val = obj[key];
 
                 if (typeof val === 'object') {
-                    obj[key] = e.solve(obj[key], options);
+                    obj[key] = e.solve(obj[key], options, root);
                 } else if (val.indexOf(options.symbol) === 0 && 
-                    obj.hasOwnProperty(val.slice(1))) {
-                    obj[key] = obj[val.slice(1)];
+                    root.hasOwnProperty(val.slice(1))) {
+                    obj[key] = root[val.slice(1)];
                 }
             }
         }
