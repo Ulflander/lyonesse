@@ -8,30 +8,30 @@
 
     describe('Jessy', function() {
 
-        describe('#toSass()', function() {
+        describe('#toScss()', function() {
 
-            it('should return a valid sass string from a jessy string with one value', function() {
-                var res = jessy.toSass({color: '#000'});
+            it('should return a valid scss string from a jessy string with one value', function() {
+                var res = jessy.toScss({color: '#000'});
                 assert.equal('$color: #000;', res);
             });
 
             it('should return an empty string from a jessy string with no value', function() {
-                var res = jessy.toSass({});
+                var res = jessy.toScss({});
                 assert.equal('', res);
             });
 
-            it('should return a valid sass string from a jessy string with two values', function() {
-                var res = jessy.toSass({color: '#000', plop: 'val'});
+            it('should return a valid scss string from a jessy string with two values', function() {
+                var res = jessy.toScss({color: '#000', plop: 'val'});
                 assert.equal('$color: #000;\n$plop: val;', res);
             });
 
-            it('should return a valid sass string from a jessy string one numeric value', function() {
-                var res = jessy.toSass({color: 5});
+            it('should return a valid scss string from a jessy string one numeric value', function() {
+                var res = jessy.toScss({color: 5});
                 assert.equal('$color: 5;', res);
             });
 
-            it('should return a valid sass string from a jessy object when jessy namespace is used', function(){
-                var res = jessy.toSass({color: {bg: {light: 5, dark: 0}}});
+            it('should return a valid scss string from a jessy object when jessy namespace is used', function(){
+                var res = jessy.toScss({color: {bg: {light: 5, dark: 0}}});
                 assert.equal('$color-bg-light: 5;\n$color-bg-dark: 0;', res);
             });
         });
@@ -154,8 +154,8 @@
                 var res = jessy.fromString('my:\n    namespace:\n        color: #000\n    inside: #f00\nglobal: #fff');
                 assert.equal(res, 'var my = {\n    namespace: {\n        color: \'#000\'\n    },\n    inside: \'#f00\'\n},\n    global = \'#fff\';');
             });
-            it('should return expected result when targeting sass', function(){
-                var res = jessy.fromString('my:\n    namespace:\n        color: #000\n    inside: #f00\nglobal: #fff', {target: 'sass'});
+            it('should return expected result when targeting scss', function(){
+                var res = jessy.fromString('my:\n    namespace:\n        color: #000\n    inside: #f00\nglobal: #fff', {target: 'scss'});
                 assert.equal(res, '$my-namespace-color: #000;\n$my-inside: #f00;\n$global: #fff;');
             });
         });

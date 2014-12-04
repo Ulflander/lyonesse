@@ -1,7 +1,7 @@
 {
   "name": "jessy",
   "version": "0.1.3",
-  "description": "Convert Jessy files or strings to CSS, Sass or JS",
+  "description": "Convert Jessy files or strings to CSS, Scss or JS",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -13,7 +13,7 @@
   "keywords": [
     "jessy",
     "css",
-    "sass",
+    "scss",
     "js"
   ],
   "author": "Ulflander",

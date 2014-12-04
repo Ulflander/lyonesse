@@ -29,7 +29,7 @@
     };
 
     /**
-     * Create a Sass or Js string from a Jessy file.
+     * Create a Scss or Js string from a Jessy file.
      * 
      * @param  {String}   path     Path to file
      * @param  {Object}   options  Options
@@ -56,7 +56,7 @@
 
 
     /**
-     * Create a Sass or Js string from a Jessy string.
+     * Create a Scss or Js string from a Jessy string.
      * 
      * @param  {String}   path     Path to file
      * @param  {Object}   options  Options
@@ -76,7 +76,7 @@
         if (options.target === 'js') {
             result = e.toJs(jessy, options);
         } else {
-            result = e.toSass(jessy, options);
+            result = e.toScss(jessy, options);
         }
 
         if (typeof callback === 'function') {
@@ -87,13 +87,13 @@
     };
 
     /**
-     * Create a sass string from a Jessy parsed object.
+     * Create a scss string from a Jessy parsed object.
      * 
      * @param  {Object} obj     Jessy object
      * @param  {Object} options Options
-     * @return {String}         Sass string
+     * @return {String}         Scss string
      */
-    e.toSass = function(obj, options, res, ns) {
+    e.toScss = function(obj, options, res, ns) {
         var k;
         res = res || [];
 
@@ -106,7 +106,7 @@
         for (k in obj) {
             if (obj.hasOwnProperty(k)) {
                 if (typeof obj[k] === 'object') {
-                    e.toSass(obj[k], options, res, (!!ns ? ns + '-' : '') + k);
+                    e.toScss(obj[k], options, res, (!!ns ? ns + '-' : '') + k);
                 } else {
                     res.push(options.symbol + (!!ns ? ns + '-' : '') + k + ': ' + obj[k] + ';');
                 }

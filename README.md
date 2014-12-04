@@ -3,7 +3,7 @@ Jessy
 
 [![Build Status](https://travis-ci.org/Ulflander/jessy.svg?branch=master)](https://travis-ci.org/Ulflander/jessy)
 
-Convert Jessy files or strings to Sass and/or JS.
+Convert Jessy files or strings to Scss and/or JS.
 
 See also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
 your gulp build process.
@@ -44,11 +44,11 @@ Callback takes two arguments: `err` in case of errors, and `result` for compiled
 
 ##### `jessy.fromString(str, [options], callback)`
 
-Parse a Jessy string and call back with Js or Sass compiled string.
+Parse a Jessy string and call back with Js or Scss compiled string.
 
 ##### `jessy.fromFile(filepath, [options], callback)`
 
-Parse a Jessy file and call back with Js or Sass compiled string.
+Parse a Jessy file and call back with Js or Scss compiled string.
 
 ##### `jessy.parse(str)`
 
@@ -58,9 +58,9 @@ Returns a Jessy object from a Jessy string.
 
 Solve variables inside the Jessy file.
 
-##### `jessy.toSass(obj, options)`
+##### `jessy.toScss(obj, options)`
 
-Returns a Sass string from a Jessy object, using given options.
+Returns a Scss string from a Jessy object, using given options.
 
 ##### `jessy.toJs(obj, options)`
 
@@ -118,8 +118,8 @@ var my = {
     global = '#fff';
 ```
 
-and the following Sass:
-```sass
+and the following Scss:
+```scss
 $my-namespace-color: #000;
 $my-inside: #f00;
 $global: #fff;
@@ -127,7 +127,7 @@ $global: #fff;
 
 ## Options
 
-- `symbol`: default `'$'` - Specifies prefix of Sass variables
+- `symbol`: default `'$'` - Specifies prefix of Scss variables
 - `target`: `'scss'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
 - `namespace`: default `null`
 - `closure`: default `false` - For JS only, enclose result in a closure (nested namespaces only)
