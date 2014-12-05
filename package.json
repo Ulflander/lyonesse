@@ -1,17 +1,17 @@
 {
-  "name": "jessy",
+  "name": "lyonesse",
   "version": "0.2.1",
-  "description": "Convert Jessy files or strings to CSS, Scss or JS",
+  "description": "Need to use the same values in JS and SCSS? Use Lyonesse!",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ulflander/jessy.git"
+    "url": "https://github.com/Ulflander/lyonesse.git"
   },
   "keywords": [
-    "jessy",
+    "lyonesse",
     "css",
     "scss",
     "js"
@@ -19,9 +19,9 @@
   "author": "Ulflander",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ulflander/jessy/issues"
+    "url": "https://github.com/Ulflander/lyonesse/issues"
   },
-  "homepage": "https://github.com/Ulflander/jessy",
+  "homepage": "https://github.com/Ulflander/lyonesse",
   "devDependencies": {
     "mocha": "^1.21.4"
   },

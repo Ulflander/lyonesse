@@ -29,7 +29,7 @@
     };
 
     /**
-     * Create a Scss or Js string from a Jessy file.
+     * Create a Scss or Js string from a Lyonesse file.
      * 
      * @param  {String}   path     Path to file
      * @param  {Object}   options  Options
@@ -56,7 +56,7 @@
 
 
     /**
-     * Create a Scss or Js string from a Jessy string.
+     * Create a Scss or Js string from a Lyonesse string.
      * 
      * @param  {String}   path     Path to file
      * @param  {Object}   options  Options
@@ -70,13 +70,13 @@
             options = e.defaults(options);
         }
 
-        var jessy = e.solve(e.parse(str)),
+        var lyonesse = e.solve(e.parse(str)),
             result;
 
         if (options.target === 'js') {
-            result = e.toJs(jessy, options);
+            result = e.toJs(lyonesse, options);
         } else {
-            result = e.toScss(jessy, options);
+            result = e.toScss(lyonesse, options);
         }
 
         if (typeof callback === 'function') {
@@ -87,9 +87,9 @@
     };
 
     /**
-     * Create a scss string from a Jessy parsed object.
+     * Create a scss string from a Lyonesse parsed object.
      * 
-     * @param  {Object} obj     Jessy object
+     * @param  {Object} obj     Lyonesse object
      * @param  {Object} options Options
      * @return {String}         Scss string
      */
@@ -117,9 +117,9 @@
     };
 
     /**
-     * Create a JS string from a Jessy parsed object.
+     * Create a JS string from a Lyonesse parsed object.
      * 
-     * @param  {Object} obj     Jessy object
+     * @param  {Object} obj     Lyonesse object
      * @param  {Object} options Options
      * @return {String}         JS string
      */
@@ -195,9 +195,9 @@
 
 
     /**
-     * Recursively parse a jessy string and return an object.
+     * Recursively parse a lyonesse string and return an object.
      * 
-     * @param  {String} str Jessy string
+     * @param  {String} str Lyonesse string
      * @param  {String} [obj={}] Optional, target object
      * @return {Object}     Result of parsing
      */
@@ -265,11 +265,11 @@
     };
 
     /**
-     * Solve variables in a jessy object.
+     * Solve variables in a lyonesse object.
      * 
-     * @param  {Object} obj     Jessy object
+     * @param  {Object} obj     Lyonesse object
      * @param  {Object} options Options
-     * @return  {Object} Jessy object
+     * @return  {Object} Lyonesse object
      */
     e.solve = function(obj, options, root) {
         var key,

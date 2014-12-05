@@ -1,17 +1,17 @@
-Jessy
+Lyonesse
 =====
 
-[![Build Status](https://travis-ci.org/Ulflander/jessy.svg?branch=master)](https://travis-ci.org/Ulflander/jessy)
+[![Build Status](https://travis-ci.org/Ulflander/lyonesse.svg?branch=master)](https://travis-ci.org/Ulflander/lyonesse)
 
-Convert Jessy files or strings to Scss and/or JS.
+Convert Lyonesse files or strings to Scss and/or JS.
 
-See also [gulp-jessy](https://github.com/Ulflander/gulp-jessy) to use Jessy in
+See also [gulp-lyonesse](https://github.com/Ulflander/gulp-lyonesse) to use Lyonesse in
 your gulp build process.
 
-If you use Sublime Text, download [sublime-jessy](https://github.com/Ulflander/sublime-jessy) syntax definition file, it provides code highlighting.
+If you use Sublime Text, download [sublime-lyonesse](https://github.com/Ulflander/sublime-lyonesse) syntax definition file, it provides code highlighting.
 
-- [Jessy file specs](SPEC.md)
-- [Functions](#jessy-functions)
+- [Lyonesse file specs](SPEC.md)
+- [Functions](#lyonesse-functions)
 - [Available options](#options)
 - [Run tests](#run-tests)
 - [Changelog](#changelog)
@@ -21,57 +21,57 @@ Released under MIT License.
 ## Install
 
 ```
-npm install --save jessy
+npm install --save lyonesse
 ```
 
 
-## Why Jessy
+## Why Lyonesse
 
 When developing front-ends, it's often the case that a color may be used both
 in the CSS files and in Javascript (with Canvas, SVG...).
 
-Jessy goal is to let you have a centralized file for this kind of variable.
+Lyonesse goal is to let you have a centralized file for this kind of variable.
 
 Most notably, having a unique file for all the colors used in your web 
 application will ease any future redesign.
 
-See [here](SPEC.md) the specifications of Jessy file.
+See [here](SPEC.md) the specifications of Lyonesse file.
 
 
-## Jessy functions
+## Lyonesse functions
 
 Callback takes two arguments: `err` in case of errors, and `result` for compiled string.
 
-##### `jessy.fromString(str, [options], callback)`
+##### `lyonesse.fromString(str, [options], callback)`
 
-Parse a Jessy string and call back with Js or Scss compiled string.
+Parse a Lyonesse string and call back with Js or Scss compiled string.
 
-##### `jessy.fromFile(filepath, [options], callback)`
+##### `lyonesse.fromFile(filepath, [options], callback)`
 
-Parse a Jessy file and call back with Js or Scss compiled string.
+Parse a Lyonesse file and call back with Js or Scss compiled string.
 
-##### `jessy.parse(str)`
+##### `lyonesse.parse(str)`
 
-Returns a Jessy object from a Jessy string.
+Returns a Lyonesse object from a Lyonesse string.
 
-##### `jessy.solve(obj, options)`
+##### `lyonesse.solve(obj, options)`
 
-Solve variables inside the Jessy file.
+Solve variables inside the Lyonesse file.
 
-##### `jessy.toScss(obj, options)`
+##### `lyonesse.toScss(obj, options)`
 
-Returns a Scss string from a Jessy object, using given options.
+Returns a Scss string from a Lyonesse object, using given options.
 
-##### `jessy.toJs(obj, options)`
+##### `lyonesse.toJs(obj, options)`
 
-Returns a Js string from a Jessy object, using given options.
+Returns a Js string from a Lyonesse object, using given options.
 
 #### Example
 
 ```js
-var jessy = require('jessy');
+var lyonesse = require('lyonesse');
 
-jessy.fromString('color: #000', function (err, result) {
+lyonesse.fromString('color: #000', function (err, result) {
     if (!!err) {
         return;
     }
@@ -81,9 +81,9 @@ jessy.fromString('color: #000', function (err, result) {
 });
 ```
 
-#### Variables in Jessy
+#### Variables in Lyonesse
 
-Since Jessy 0.1.2, variables inside Jessy are now supported. For example, given this Jessy file:
+Since Lyonesse 0.1.2, variables inside Lyonesse are now supported. For example, given this Lyonesse file:
 
 ```
 myColor: #234567
@@ -97,7 +97,7 @@ Use the `solve` option to deactivate this behaviour.
 
 #### Namespaces
 
-Since Jessy 0.1.3, you can use namespaces in Jessy files:
+Since Lyonesse 0.1.3, you can use namespaces in Lyonesse files:
 
 ```
 my:
@@ -131,7 +131,7 @@ $global: #fff;
 - `target`: `'scss'` or `'js'`, default `'js'` - Specifies compilation target when using `fromFile` and `fromString` functions
 - `namespace`: default `null`
 - `closure`: default `false` - For JS only, enclose result in a closure (nested namespaces only)
-- `solve`: default `true` - Solve or not the variables inside the jessy file
+- `solve`: default `true` - Solve or not the variables inside the lyonesse file
 
 ## Run tests
 
@@ -150,7 +150,4 @@ $ mocha
 - 0.2.0: It's Scss, not Sass dumb
     + Breaking change: rename `toSass` method to `toScss`
 - 0.2.1: Fix variables inside namespaces
-
-## Milestones
-
-- 0.2.0: Add theme support
+- 0.3.0: Rebranding to Lyonesse!

@@ -1,11 +1,11 @@
-Jessy file format specifications
+Lyonesse file format specifications
 ================================
 
 ## File
 
-* Basically Jessy files are like `ini` files: a simple key/value list
-* Jessy files mimetypes: `text/x-jessy` or `text/plain`
-* Jessy file extension: `.jessy` or `.jess`
+* Basically Lyonesse files are like `ini` files: a simple key/value list
+* Lyonesse files mimetypes: `text/x-lyonesse` or `text/plain`
+* Lyonesse file extension: `.lyonesse` or `.lyon`
 
 
 ## Line
@@ -32,7 +32,7 @@ There are three kind of lines:
 
 ## Example
 
-The following example is a valid Jessy file:
+The following example is a valid Lyonesse file:
 
 ```
 # This is a comment
