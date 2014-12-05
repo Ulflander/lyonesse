@@ -3,27 +3,6 @@ Lyonesse
 
 [![Build Status](https://travis-ci.org/Ulflander/lyonesse.svg?branch=master)](https://travis-ci.org/Ulflander/lyonesse)
 
-Convert Lyonesse files or strings to Scss and/or JS.
-
-See also [gulp-lyonesse](https://github.com/Ulflander/gulp-lyonesse) to use Lyonesse in
-your gulp build process.
-
-If you use Sublime Text, download [sublime-lyonesse](https://github.com/Ulflander/sublime-lyonesse) syntax definition file, it provides code highlighting.
-
-- [Lyonesse file specs](SPEC.md)
-- [Functions](#lyonesse-functions)
-- [Available options](#options)
-- [Run tests](#run-tests)
-- [Changelog](#changelog)
-
-Released under MIT License.
-
-## Install
-
-```
-npm install --save lyonesse
-```
-
 
 ## Why Lyonesse
 
@@ -37,6 +16,22 @@ application will ease any future redesign.
 
 See [here](SPEC.md) the specifications of Lyonesse file.
 
+See also [gulp-lyonesse](https://github.com/Ulflander/gulp-lyonesse) to use Lyonesse in your gulp build process.
+
+If you use Sublime Text, download [sublime-lyonesse](https://github.com/Ulflander/sublime-lyonesse) syntax definition file, it provides code highlighting.
+
+- [Functions](#lyonesse-functions)
+- [Available options](#options)
+- [Run tests](#run-tests)
+- [Changelog](#changelog)
+
+Released under MIT License.
+
+## Install
+
+```
+npm install --save lyonesse
+```
 
 ## Lyonesse functions
 

@@ -1,6 +1,6 @@
 {
   "name": "lyonesse",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Need to use the same values in JS and SCSS? Use Lyonesse!",
   "main": "index.js",
   "scripts": {
