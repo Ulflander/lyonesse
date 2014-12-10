@@ -138,7 +138,7 @@
 
         for (k in obj) {
             if (obj.hasOwnProperty(k)) {
-                str = k.replace('-', '_');
+                str = k.replace(/-/gi, '_');
 
                 if (!!options.namespace) {
                     str += ': ';

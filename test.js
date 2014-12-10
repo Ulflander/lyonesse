@@ -44,6 +44,11 @@
                 assert.equal(res, 'var color = \'#000\';');
             });
 
+            it('should return a valid JS string from a lyonesse string with many dashes', function() {
+                var res = lyonesse.toJs({'color-for-background': '#000'});
+                assert.equal(res, 'var color_for_background = \'#000\';');
+            });
+
             it('should return an empty string from a lyonesse string with no value', function() {
                 var res = lyonesse.toJs({});
                 assert.equal(res, '');
